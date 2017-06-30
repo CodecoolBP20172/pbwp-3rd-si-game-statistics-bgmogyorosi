@@ -33,3 +33,12 @@ def get_selling_avg(file_name):
     games = import_games(file_name)
     return sum_sold(file_name) / len(games)
     # return sum([game[1] for game in games]) / len(games)
+
+
+def count_longest_title(file_name):
+    games = import_games(file_name)
+    max_len = 0
+    for i in range(len(games)):
+        if len(games[i][0]) > len(games[max_len][0]):
+            max_len = i
+    return len(games[max_len][0])
