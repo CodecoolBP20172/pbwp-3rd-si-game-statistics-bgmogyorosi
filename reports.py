@@ -80,3 +80,18 @@ def get_genres(file_name):
         if game[3] not in genres:
             genres.append(game[3])
     return get_sorted_strings(genres)
+
+
+def when_was_top_sold_fps(file_name):
+    games = import_games(file_name)
+    max_fps = -1
+    for i in range(len(games)):
+        if games[i][3] == "First-person shooter":
+            max_fps = i
+            break
+    if max_fps == -1:
+        raise ValueError
+    for i in range(len(games)):
+        if games[i][3] == "First-person shooter" and games[i][1] > games[max_fps][1]:
+            max_fps = i
+    return games[max_fps][2]
