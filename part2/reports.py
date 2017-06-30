@@ -22,3 +22,8 @@ def get_most_played(file_name):
         if games[i][1] > games[max_sold][1]:
             max_sold = i
     return games[max_sold][0]
+
+
+def sum_sold(file_name):
+    games = import_games(file_name)
+    return sum([game[1] for game in games])
