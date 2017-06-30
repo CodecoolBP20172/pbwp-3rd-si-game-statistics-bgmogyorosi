@@ -55,3 +55,13 @@ def get_game(file_name, title):
         if games[i][0] == title:
             break
     return games[i]
+
+
+def count_grouped_by_genre(file_name):
+    games = import_games(file_name)
+    genres = {}
+    for game in games:
+        if not genres.get(game[3]):
+            genres.update({game[3]: 0})
+        genres[game[3]] += 1
+    return genres
