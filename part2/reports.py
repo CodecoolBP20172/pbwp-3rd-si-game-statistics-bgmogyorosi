@@ -26,13 +26,13 @@ def get_most_played(file_name):
 
 def sum_sold(file_name):
     games = import_games(file_name)
-    return sum([game[1] for game in games])
+    return sum(game[1] for game in games)
 
 
 def get_selling_avg(file_name):
     games = import_games(file_name)
     return sum_sold(file_name) / len(games)
-    # return sum([game[1] for game in games]) / len(games)
+    # return sum(game[1] for game in games) / len(games)
 
 
 def count_longest_title(file_name):
@@ -42,3 +42,8 @@ def count_longest_title(file_name):
         if len(games[i][0]) > len(games[max_len][0]):
             max_len = i
     return len(games[max_len][0])
+
+
+def get_date_avg(file_name):
+    games = import_games(file_name)
+    return round(sum(game[2] for game in games) / len(games))
