@@ -27,3 +27,9 @@ def get_most_played(file_name):
 def sum_sold(file_name):
     games = import_games(file_name)
     return sum([game[1] for game in games])
+
+
+def get_selling_avg(file_name):
+    games = import_games(file_name)
+    return sum_sold(file_name) / len(games)
+    # return sum([game[1] for game in games]) / len(games)
