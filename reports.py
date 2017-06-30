@@ -15,10 +15,10 @@ def import_games(file_name):
     return games
 
 
-def get_sorted(arr):
+def get_sorted_strings(arr):
     for i in range(1, len(arr)):
         for j in range(len(arr) - 1):
-            if arr[j] > arr[i]:
+            if arr[j].lower() > arr[i].lower():
                 temp = arr[i]
                 arr[i] = arr[j]
                 arr[j] = temp
@@ -70,4 +70,13 @@ def sort_abc(file_name):
     for game in games:
         titles.append(game[0])
     # return sorted(titles)
-    return get_sorted(titles)
+    return get_sorted_strings(titles)
+
+
+def get_genres(file_name):
+    games = import_games(file_name)
+    genres = []
+    for game in games:
+        if game[3] not in genres:
+            genres.append(game[3])
+    return get_sorted_strings(genres)
