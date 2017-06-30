@@ -47,3 +47,11 @@ def count_longest_title(file_name):
 def get_date_avg(file_name):
     games = import_games(file_name)
     return round(sum(game[2] for game in games) / len(games))
+
+
+def get_game(file_name, title):
+    games = import_games(file_name)
+    for i in range(len(games)):
+        if games[i][0] == title:
+            break
+    return games[i]
