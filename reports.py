@@ -15,6 +15,16 @@ def import_games(file_name):
     return games
 
 
+def get_sorted(arr):
+    for i in range(1, len(arr)):
+        for j in range(len(arr) - 1):
+            if arr[j] > arr[i]:
+                temp = arr[i]
+                arr[i] = arr[j]
+                arr[j] = temp
+    return arr
+
+
 def count_games(file_name):
     games = import_games(file_name)
     return len(games)
@@ -52,3 +62,12 @@ def get_line_number_by_title(file_name, title):
         if games[i][0] == title:
             return i + 1
     raise ValueError
+
+
+def sort_abc(file_name):
+    games = import_games(file_name)
+    titles = []
+    for game in games:
+        titles.append(game[0])
+    # return sorted(titles)
+    return get_sorted(titles)
