@@ -6,7 +6,7 @@ def import_games(file_name):
     content = file.read().split('\n')
     games = []
     for line in content:
-        game = line.split('\t') 
+        game = line.split('\t')
         if len(game) == 5:
             game[1] = float(game[1])
             game[2] = int(game[2])
@@ -65,3 +65,11 @@ def count_grouped_by_genre(file_name):
             genres.update({game[3]: 0})
         genres[game[3]] += 1
     return genres
+
+
+def get_date_ordered(file_name):
+    games = import_games(file_name)
+    titles = []
+    # Ordering in ascending, but we order the negative of the year in asc, so it is desc
+    games.sort(key=lambda x: (-x[2], x[0]), reverse=False)
+    return [game[0] for game in games]
