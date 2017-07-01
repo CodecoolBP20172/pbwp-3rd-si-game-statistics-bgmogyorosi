@@ -9,17 +9,6 @@ def get_sorted_strings(arr):
         return arr
 
 
-def get_datas(dictionary):
-    while True:
-        try:
-            dictionary.update({'year': int(input('Please give a year: '))})
-            break
-        except ValueError:
-            continue
-    dictionary.update({'genre': input('Please give a genre: ')})
-    dictionary.update({'title': input('Please give a title: ')})
-
-
 class Report:
 
     file_name = ''
@@ -56,18 +45,22 @@ class Report:
         return False
 
     def get_latest(self):
-        max_index = 0
-        for i in range(len(self.games)):
-            if self.games[i][2] > self.games[max_index][2]:
-                max_index = i
-        return self.games[max_index][0]
+        # max_index = 0
+        # for i in range(len(self.games)):
+        #    if self.games[i][2] > self.games[max_index][2]:
+        #        max_index = i
+        # return self.games[max_index][0]
+        games = sorted(self.games, key=lambda x: x[2], reverse=True)
+        return games[0][0]
 
     def count_by_genre(self, genre):
-        genre_sum = 0
-        for game in self.games:
-            if game[3] == genre:
-                genre_sum += 1
-        return genre_sum
+        # genre_sum = 0
+        # for game in self.games:
+        #    if game[3] == genre:
+        #        genre_sum += 1
+        # return genre_sum
+        genre_sum = [1 for game in self.games if game[3] == genre]
+        return sum(genre_sum)
 
     def get_line_number_by_title(self, title):
         for i in range(len(self.games)):
