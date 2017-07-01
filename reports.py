@@ -61,7 +61,7 @@ def get_line_number_by_title(file_name, title):
     for i in range(len(games)):
         if games[i][0] == title:
             return i + 1
-    raise ValueError
+    raise ValueError('Invalid title')
 
 
 def sort_abc(file_name):
